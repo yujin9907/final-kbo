@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class testController {
     @GetMapping("/")
     public String test(){
-        return "/test";
+        return "team/teamList";
     }
 }
