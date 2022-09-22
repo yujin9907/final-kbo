@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.meta.finalkbo.domain.player.PlayersDao">
+
+    <select id="findByTeamId" resultType="site.meta.finalkbo.web.dto.response.PlayerViewDto">
+        select p.*, t.name teamName
+        from player p
+        left join team t
+        on p.teamId = t.id
+        where teamId=#{teamId}
+    </select>
+
+    <select id="positionView" resultType="site.meta.finalkbo.web.dto.response.PositionDto">
+        SELECT POSITION,
+               MAX(if(teamId=1,name,''))'dusan',
+                MAX(if(teamId=2,name,''))'NC',
+                MAX(if(teamId=3,name,''))'lotte'
+        FROM player
+        GROUP BY position
+    </select>
+
+    <insert id="insert">
+        INSERT INTO player(name, teamId, position, createDate)
+        VALUES(#{name}, #{teamId}, #{position}, now())
+    </insert>
+
+    <select id="findById" resultType="site.meta.finalkbo.web.dto.response.PlayerViewDto">
+    </select>
+
+    <select id="findAll" resultType="site.meta.finalkbo.web.dto.response.PlayerViewDto">
+        select p.*, t.name teamName
+        from player p
+                 left join team t
+                           on p.teamId = t.id
+    </select>
+
+    <delete id="deleteById">
+    </delete>
+
+    <update id ="update">
+    </update>
+
+</mapper>

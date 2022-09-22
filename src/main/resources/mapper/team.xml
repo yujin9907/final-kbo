@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.meta.finalkbo.domain.team.TeamDao">
+
+    <insert id="insert">
+        INSERT INTO team(stadiumId, name, createDate)
+        VALUES(#{stadiumId}, #{name},now())
+    </insert>
+
+    <select id="findById" resultType="site.meta.finalkbo.domain.team.Team">
+    </select>
+
+    <select id="findAllView" resultType="site.meta.finalkbo.web.dto.response.TeamViewDto">
+        select t.id id, t.name name, t.createDate createDate, s.name StadiumName, s.id stadiumId
+        from team t
+        left join stadium s
+        on t.stadiumId = s.id
+    </select>
+
+    <delete id="deleteById">
+    </delete>
+
+    <update id ="update">
+    </update>
+
+</mapper>

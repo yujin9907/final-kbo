@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.meta.finalkbo.domain.expulsion.ExpulsionDao">
+
+    <insert id="insert">
+        insert into expulsion(reason, playerId, createDate)
+        values (#{reason}, #{id}, now())
+    </insert>
+
+    <select id="findAll" resultType="site.meta.finalkbo.domain.expulsion.Expulsion">
+        select * from expulsion
+    </select>
+
+    <delete id="deleteById">
+    </delete>
+
+    <update id ="update">
+    </update>
+
+</mapper>

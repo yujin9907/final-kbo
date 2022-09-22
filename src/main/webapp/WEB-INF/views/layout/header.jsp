@@ -36,12 +36,12 @@
                 <li class="nav-item"><a class="nav-link" href="/team">팀 목록</a></li>
                 <li class="nav-item"><a class="nav-link" href=/teamInsertForm>팀 등록</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="#">선수 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">선수 등록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/player">선수 목록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/playerInserform">선수 등록</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="#">팀 별 포지션 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">퇴출 선수 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">퇴출 사유 등록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/position">팀 별 포지션 목록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/explusion/1">퇴출 선수 목록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/explusionForm">퇴출 사유 등록</a></li>
             </ul>
         </div>
     </div>

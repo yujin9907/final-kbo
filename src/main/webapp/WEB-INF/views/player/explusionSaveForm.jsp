@@ -3,15 +3,15 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-    <h1>팀 등록</h1>
+    <h1>퇴출 선수 등록</h1>
     <form>
-        <select id="stadium">
-            <c:forEach var="stadium" items="${stadium}">
-                <option value="${stadium.id}">${stadium.name}</option>
+        <select id="id">
+            <c:forEach var="player" items="${player}">
+                <option value="${player.id}">${player.name}</option>
             </c:forEach>
-            <option></option>
         </select>
-        <input id="name" type="text" placeholder="Enter stadium">
+        퇴출사유
+        <input id="reason" type="text" placeholder="Enter reason">
         <button id="btnInsert">등록</button>
     </form>
 </div>
@@ -23,13 +23,11 @@
 
     function insert(){
         let data = {
-            name: $("#name").val(),
-            stadiumId : $("#stadium").val()
+            id: $("#id").val(),
+            reason : $("#reason").val()
         };
 
-        console.log(data);
-        console.log(data.stadiumId);
-        $.ajax("/team", {
+        $.ajax("/exclusion", {
             type: "POST",
             dataType: "json",
             data: JSON.stringify(data),
@@ -38,7 +36,7 @@
             }
         }).done((res) => {
             if (res.code == 1) {
-                location.href = "/team";
+                location.href = "/";
             }
         });
     }
