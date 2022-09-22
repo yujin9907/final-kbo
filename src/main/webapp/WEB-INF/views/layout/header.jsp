@@ -30,11 +30,11 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#">경기장 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">경기장 등록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/stadium">경기장 목록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/stadium/insertForm">경기장 등록</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="#">팀 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">팀 등록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/team">팀 목록</a></li>
+                <li class="nav-item"><a class="nav-link" href=/teamInsertForm>팀 등록</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="#">선수 목록</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">선수 등록</a></li>

@@ -2,22 +2,28 @@
 
 <%@ include file="../layout/header.jsp" %>
 <div class="container mt-3">
-    <h2>Bordered Table</h2>
-    <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>
+    <h2>경기장 목록</h2>
+    <p>경기장 목록 페이지입니다</p>
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
+            <th>번호</th>
+            <th>이름</th>
+            <th>개장일</th>
+            <th>수정</th>
+            <th>삭제</th>
         </tr>
         </thead>
         <tbody>
+        <c:forEach var="stadium" items="${stadium}">
         <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
+            <td>${stadium.id}</td>
+            <td>${stadium.name}</td>
+            <td>${stadium.createDate}</td>
+            <td><i class="fa-solid fa-pen"></i></td>
+            <td><i class="fa-solid fa-trash"></i></td>
         </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
