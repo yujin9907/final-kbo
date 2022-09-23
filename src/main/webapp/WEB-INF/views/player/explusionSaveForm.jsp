@@ -14,6 +14,13 @@
         <input id="reason" type="text" placeholder="Enter reason">
         <button id="btnInsert">등록</button>
     </form>
+    <h1>목록</h1>
+    <c:forEach var="reason" items="${reasons}">
+    <ul>
+        <li>플레이어 아이디 : ${reason.playerId}</li>
+        <li>퇴출 이유 : ${reason.reason}</li>
+    </ul>
+    </c:forEach>
 </div>
 
 <script>

@@ -40,7 +40,7 @@
                 <li class="nav-item"><a class="nav-link" href="/player/insert">선수 등록</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/position">팀 별 포지션 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href="/explusion/1">퇴출 선수 목록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/explusion">퇴출 선수 목록</a></li>
                 <li class="nav-item"><a class="nav-link" href="/explusionForm">퇴출 사유 등록</a></li>
             </ul>
         </div>

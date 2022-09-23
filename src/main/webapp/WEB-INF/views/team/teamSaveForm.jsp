@@ -9,7 +9,6 @@
             <c:forEach var="stadium" items="${stadium}">
                 <option value="${stadium.id}">${stadium.name}</option>
             </c:forEach>
-            <option></option>
         </select>
         <input id="name" type="text" placeholder="Enter stadium">
         <button id="btnInsert">등록</button>

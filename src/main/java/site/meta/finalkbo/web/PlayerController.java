@@ -68,16 +68,25 @@ public class PlayerController {
 
 
 
-    @GetMapping("/explusion/{teamId}")
-    public String explusion(@PathVariable Integer teamId, Model model){
-        model.addAttribute("player", playerService.구단별목록보기(teamId));
-        model.addAttribute("explusion", playerService.퇴출보기());
+    @GetMapping("/explusion")
+    public String explusion(Model model){
+        model.addAttribute("team", teamService.팀목록보기());
         return "player/explusion";
     }
+    @GetMapping("/explusion/{teamId}")
+    public @ResponseBody CMRespDto<?> explusionteam(@PathVariable Integer teamId){
+        List<PlayerViewDto> player = playerService.구단별목록보기(teamId);
+        return new CMRespDto<>(1, "1", player);
+    }
+
+
+
+
 
     @GetMapping("/explusionForm")
     public String explusionForm(Model model){
         model.addAttribute("player", playerService.선수목록보기());
+        model.addAttribute("reasons", playerService.퇴출보기());
         return "player/explusionSaveForm";
     }
     @PostMapping("/exclusion")

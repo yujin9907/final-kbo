@@ -3,13 +3,15 @@
 <%@ include file="../layout/header.jsp" %>
 <div class="container mt-3">
     <h2>퇴출 선수 목록</h2>
-    <div class="container">
-        <button id="btnDusan" value="1">두산</button>
-        <button id="btnNc" value="2">NC</button>
-        <button id="btnLotte" value="3">롯데</button>
-    </div>
 
-    <table id="viewtable" class="table table-bordered">
+        <div class="container">
+            <c:forEach var="team" items="${team}">
+            <button onclick="viewteam(${team.id})" value="">${team.name}</button>
+            </c:forEach>
+        </div>
+
+
+    <table id="divReloadLayer" class="table table-bordered">
         <thead>
         <tr>
             <th>번호</th>
@@ -20,51 +22,47 @@
             <th>퇴출일</th>
         </tr>
         </thead>
-        <tbody>
-        <c:forEach var="player" items="${player}">
-            <tr>
-                <td>${player.id}</td>
-                <td>${player.teamName}</td>
-                <td>${player.position}</td>
-                <td>${player.name}</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </c:forEach>
+        <tbody id="team_list">
+
+
         </tbody>
     </table>
 </div>
 
 <script>
-    $("#btnDusan").click(()=>{
-        let teamId=$("#btnDusan").val();
-        teamList(teamId);
-    });
-
-    $("#btnNc").click(()=>{
-        let teamId=$("#btnNc").val();
-        console.log(teamId);
-        teamList(teamId);
-    });
-
-    $("#btnLotte").click(()=>{
-        let teamId=$("#btnLotte").val();
-        teamList(teamId);
-    });
-
-    function teamList(teamId){
-        $.ajax("/explusion/" + teamId, {
+    function viewteam(id){
+        $.ajax({
             type: "GET",
-            dataType: "json",
-        }).done((res) => {
-            if (res.code == 1) {
-                alert('넘어감');
-                $("#viewtable").load(location.href + ' #viewtable');
-            } else {
-                alert("실패");
-            }
+            url: "/expulsion/"+id,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).done(function(res){
+            console.log(res.data.player);
+            $("#team_list").empty();
+            renderTeamList(res.data.player);
+        }).fail(function(error){
+            console.log(error);
+            alert("실패");
         });
     }
+
+    function renderTeamList(teams){
+        for(let team of teams){
+            // $("#team_list").append(makeTeamItem(team));
+            console.log(team);
+        }
+    }
+    function makeTeamItem(team){
+        <%--let item = `<tr>`;--%>
+        <%--item += `<td>${team.teamName}</td>`;--%>
+        <%--item += `<td>${team.position}</td>`;--%>
+        <%--item += `<td>${team.name}</td>`;--%>
+        <%--item += `<td></td>`;--%>
+        <%--item += `<td></td>`;--%>
+        <%--item += `</tr>`;--%>
+        <%--return item;--%>
+    }
+
 
 </script>
 <%@ include file="../layout/footer.jsp" %>
