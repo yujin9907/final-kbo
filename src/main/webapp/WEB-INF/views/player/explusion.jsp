@@ -9,7 +9,7 @@
         <button id="btnLotte" value="3">롯데</button>
     </div>
 
-    <table class="table table-bordered">
+    <table id="viewtable" class="table table-bordered">
         <thead>
         <tr>
             <th>번호</th>
@@ -43,6 +43,7 @@
 
     $("#btnNc").click(()=>{
         let teamId=$("#btnNc").val();
+        console.log(teamId);
         teamList(teamId);
     });
 
@@ -52,13 +53,13 @@
     });
 
     function teamList(teamId){
-        $.ajax("/explusion/"+teamId, {
+        $.ajax("/explusion/" + teamId, {
             type: "GET",
             dataType: "json",
         }).done((res) => {
             if (res.code == 1) {
-                location.reload();
-                // $("#lovecount").load(location.href + ' #lovecount');
+                alert('넘어감');
+                $("#viewtable").load(location.href + ' #viewtable');
             } else {
                 alert("실패");
             }

@@ -8,7 +8,7 @@ import java.util.List;
 public interface TeamDao {
     public void insert(TeamInsertDto teamInsertDto);
     public List<TeamViewDto> findAllView();
-    public void findById(Integer id);
+    public Team findById(Integer id);
     public void deleteById(Integer id);
-    public void update();
+    public void update(Integer id, Team team);
 }

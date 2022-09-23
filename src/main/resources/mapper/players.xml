@@ -14,9 +14,9 @@
 
     <select id="positionView" resultType="site.meta.finalkbo.web.dto.response.PositionDto">
         SELECT POSITION,
-               MAX(if(teamId=1,name,''))'dusan',
-                MAX(if(teamId=2,name,''))'NC',
-                MAX(if(teamId=3,name,''))'lotte'
+        <foreach collection="teams" item="team" close="" separator=", ">
+        MAX(if(teamId=#{team.id},name,'')) as #{team.name}
+        </foreach>
         FROM player
         GROUP BY position
     </select>
@@ -26,7 +26,8 @@
         VALUES(#{name}, #{teamId}, #{position}, now())
     </insert>
 
-    <select id="findById" resultType="site.meta.finalkbo.web.dto.response.PlayerViewDto">
+    <select id="findById" resultType="site.meta.finalkbo.domain.player.Player">
+        select * from player where id=#{id}
     </select>
 
     <select id="findAll" resultType="site.meta.finalkbo.web.dto.response.PlayerViewDto">
@@ -37,9 +38,11 @@
     </select>
 
     <delete id="deleteById">
+        DELETE FROM player WHERE id=#{id}
     </delete>
 
     <update id ="update">
+        UPDATE player SET name=#{player.name}, position=#{player.position}, teamId=#{player.teamId} where id=#{id}
     </update>
 
 </mapper>

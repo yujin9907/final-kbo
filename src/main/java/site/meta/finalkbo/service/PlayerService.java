@@ -4,11 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import site.meta.finalkbo.domain.expulsion.Expulsion;
 import site.meta.finalkbo.domain.expulsion.ExpulsionDao;
+import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.domain.player.PlayersDao;
+import site.meta.finalkbo.domain.team.TeamDao;
 import site.meta.finalkbo.web.dto.request.ExclusionInsertDto;
 import site.meta.finalkbo.web.dto.request.PlayerInsertDto;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 import site.meta.finalkbo.web.dto.response.PositionDto;
+import site.meta.finalkbo.web.dto.response.TeamViewDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,9 +21,21 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Service
 public class PlayerService {
+    private final TeamDao teamDao;
     private final PlayersDao playersDao;
     private final ExpulsionDao expulsionDao;
 
+
+
+    public void 선수삭제(Integer id){
+        playersDao.deleteById(id);
+    }
+    public void 선수업데이트(Integer id, Player player){
+        playersDao.update(id, player);
+    }
+    public Player 선수한건보기(Integer id){
+        return playersDao.findById(id);
+    }
     public List<PlayerViewDto> 선수목록보기(){
         return playersDao.findAll();
     };
@@ -28,7 +43,8 @@ public class PlayerService {
         playersDao.insert(playerInsertDto);
     }
     public List<PositionDto> 포지션별보기(){
-        return playersDao.positionView();
+        List<TeamViewDto> teams = teamDao.findAllView();
+        return playersDao.positionView(teams);
     }
 
     public List<PlayerViewDto> 구단별목록보기(Integer teamId){

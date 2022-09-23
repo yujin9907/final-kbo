@@ -15,9 +15,9 @@
         insert();
     });
 
-    function insert(){
+    function insert() {
         let data = {
-            name: $("#name").val(),
+            name: $("#name").val()
         };
 
         $.ajax("/stadium", {
@@ -25,11 +25,14 @@
             dataType: "json",
             data: JSON.stringify(data),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json; charset=utf-8"
             }
         }).done((res) => {
             if (res.code == 1) {
+                alert("됨");
                 location.href = "/stadium";
+            } else {
+                alert("실패");
             }
         });
     }

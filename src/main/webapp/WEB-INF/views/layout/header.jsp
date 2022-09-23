@@ -34,10 +34,10 @@
                 <li class="nav-item"><a class="nav-link" href="/stadium/insertForm">경기장 등록</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/team">팀 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href=/teamInsertForm>팀 등록</a></li>
+                <li class="nav-item"><a class="nav-link" href=/team/insert>팀 등록</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/player">선수 목록</a></li>
-                <li class="nav-item"><a class="nav-link" href="/playerInserform">선수 등록</a></li>
+                <li class="nav-item"><a class="nav-link" href="/player/insert">선수 등록</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/position">팀 별 포지션 목록</a></li>
                 <li class="nav-item"><a class="nav-link" href="/explusion/1">퇴출 선수 목록</a></li>

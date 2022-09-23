@@ -27,8 +27,6 @@
             stadiumId : $("#stadium").val()
         };
 
-        console.log(data);
-        console.log(data.stadiumId);
         $.ajax("/team", {
             type: "POST",
             dataType: "json",

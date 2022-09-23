@@ -6,8 +6,8 @@
     <h1>선수 등록</h1>
     <form>
         <select id="team">
-            <c:forEach var="player" items="${players}">
-                <option value="${player.teamId}">${player.teamName}</option>
+            <c:forEach var="team" items="${team}">
+                <option value="${team.id}">${team.name}</option>
             </c:forEach>
         </select>
         <input id="name" type="text" placeholder="Enter name">

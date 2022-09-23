@@ -22,13 +22,43 @@
                 <td>${team.stadiumName}</td>
                 <td>${team.name}</td>
                 <td>${team.createDate}</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash"></i></td>
+                <td><a href="team/update/${team.id}"><i class="fa-solid fa-pen"></i></a></td>
+                <td><i onclick="clickDelete(${team.id})"  class="fa-solid fa-trash"></i></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
+
+<script>
+
+    $("#update").css("cursor","pointer").click(() => {
+        // update();
+    });
+
+    $(".fa-trash").css("cursor","pointer");
+
+    function clickDelete(id){
+        let ans = confirm("삭제?");
+        if (ans){
+            deleteStadium(id);
+        }
+    }
+
+    function deleteStadium(id){
+        $.ajax("/team/delete/"+id, {
+            type: "DELETE",
+            dataType: "json",
+        }).done((res) => {
+            if (res.code == 1) {
+                alert("삭제하였습니다");
+                location.href = "/team";
+            } else {
+                alert("삭제 실패");
+            }
+        });
+    }
+</script>
 <%@ include file="../layout/footer.jsp" %>
 
 

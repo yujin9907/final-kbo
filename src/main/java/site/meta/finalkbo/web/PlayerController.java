@@ -6,10 +6,13 @@ import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.service.PlayerService;
+import site.meta.finalkbo.service.TeamService;
 import site.meta.finalkbo.web.dto.request.ExclusionInsertDto;
 import site.meta.finalkbo.web.dto.request.InsertDto;
 import site.meta.finalkbo.web.dto.request.PlayerInsertDto;
+import site.meta.finalkbo.web.dto.response.CMRespDto;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 
 import java.util.List;
@@ -20,6 +23,25 @@ import java.util.Map;
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final TeamService teamService;
+
+
+    @DeleteMapping("/player/delete/{id}")
+    public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id){
+        playerService.선수삭제(id);
+        return new CMRespDto<>(1, "성공", null);
+    }
+    @PutMapping("/player/update/{id}")
+    public @ResponseBody CMRespDto<?> update(@PathVariable Integer id, @RequestBody Player player){
+        playerService.선수업데이트(id, player);
+        return new CMRespDto<>(1, "1", null);
+    }
+    @GetMapping("/player/update/{id}")
+    public String updateForm(Model model, @PathVariable Integer id){
+        model.addAttribute("team", teamService.팀목록보기());
+        model.addAttribute("player", playerService.선수한건보기(id));
+        return "player/playerUpdateForm";
+    }
 
     @GetMapping("/player")
     public String playerview(Model model){
@@ -27,16 +49,15 @@ public class PlayerController {
         return "player/playerList";
     }
 
-    @GetMapping("/playerInserform")
+    @GetMapping("/player/insert")
     public String insertForm(Model model){
-        model.addAttribute("players", playerService.선수목록보기());
+        model.addAttribute("team", teamService.팀목록보기());
         return "player/playerSaveForm";
     }
     @PostMapping("/player")
-    public @ResponseBody String insert(@RequestBody PlayerInsertDto playerInsertDto){
-        System.out.println(playerInsertDto.getName());
+    public @ResponseBody CMRespDto<?> insert(@RequestBody PlayerInsertDto playerInsertDto){
         playerService.선수등록(playerInsertDto);
-        return "redirect:/player";
+        return new CMRespDto<>(1, "성공", null);
     }
 
     @GetMapping("/position")
@@ -44,6 +65,8 @@ public class PlayerController {
         model.addAttribute("position", playerService.포지션별보기());
         return "player/playerPosition";
     }
+
+
 
     @GetMapping("/explusion/{teamId}")
     public String explusion(@PathVariable Integer teamId, Model model){

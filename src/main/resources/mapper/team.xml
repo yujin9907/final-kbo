@@ -10,6 +10,7 @@
     </insert>
 
     <select id="findById" resultType="site.meta.finalkbo.domain.team.Team">
+        select * from team where id=#{id}
     </select>
 
     <select id="findAllView" resultType="site.meta.finalkbo.web.dto.response.TeamViewDto">
@@ -20,9 +21,11 @@
     </select>
 
     <delete id="deleteById">
+        DELETE FROM team WHERE id=#{id}
     </delete>
 
     <update id ="update">
+        UPDATE team SET stadiumId=#{team.stadiumId}, name=#{team.name} where id=#{id};
     </update>
 
 </mapper>

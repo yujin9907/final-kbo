@@ -24,13 +24,42 @@
                 <td>${player.position}</td>
                 <td>${player.name}</td>
                 <td>${player.createDate}</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash"></i></td>
+                <td><a href="/player/update/${player.id}"> <i class="fa-solid fa-pen"></i></a></td>
+                <td><i class="fa-solid fa-trash" onclick="clickDelete(${player.id})"></i></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
+
+<script>
+
+    $("#update").css("cursor","pointer").click(() => {
+        // update();
+    });
+
+    $(".fa-trash").css("cursor","pointer");
+
+    function clickDelete(id){
+        let ans = confirm("삭제?");
+        if (ans){
+            deleteStadium(id);
+        }
+    }
+    function deleteStadium(id){
+        $.ajax("/player/delete/"+id, {
+            type: "DELETE",
+            dataType: "json",
+        }).done((res) => {
+            if (res.code == 1) {
+                alert("삭제하였습니다");
+                location.reload();
+            } else {
+                alert("삭제 실패");
+            }
+        });
+    }
+</script>
 <%@ include file="../layout/footer.jsp" %>
 
 
