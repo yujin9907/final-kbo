@@ -48,7 +48,14 @@ public class PlayerService {
     }
 
     public List<PlayerViewDto> 구단별목록보기(Integer teamId){
-        return playersDao.findByTeamId(teamId);
+
+        return playersDao.playerTeamExplusion(teamId);
+    }
+    // t-p-e 조인으로 dto를 한번에 가져오려 했으나, 그러면 p 목록이 다 나오지 않ㅇㅁ
+    // 그래서 dto에 p 목록을 받아오고 e-reason을 넣기 위한 로직 구성
+    public Expulsion 퇴출사유보기(Integer playerId){
+        // 그러면, plaerview를 합치면 되지 않냐
+        return expulsionDao.findByPlayerId(playerId);
     }
     public void 퇴출등록(ExclusionInsertDto exclusionInsertDto){
         expulsionDao.insert(exclusionInsertDto);

@@ -14,4 +14,9 @@ public class PlayerViewDto {
     private String position;
     private Timestamp createDate;
     private String teamName;
+
+    private Integer explusionId;
+    private String reason;
+    private Timestamp explusionCreateDate;
+
 }

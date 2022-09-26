@@ -47,12 +47,13 @@
 
     function makeTeamItem(x){
         let item = `<tr>`;
-        for(let team of x){
-            item += `<td>`+team.teamName+`</td>`;
-            item += `<td>`+team.position+`</td>`;
-            item += `<td>`+team.name+`</td>`;
-            item += `<td>공란</td>`;
-            item += `<td>공란</td>`;
+        for(let data of x){
+            item += `<td>`+data.id+`</td>`;
+            item += `<td>`+data.teamName+`</td>`;
+            item += `<td>`+data.position+`</td>`;
+            item += `<td>`+data.name+`</td>`;
+            item += `<td>`+data.reason+`</td>`;
+            item += `<td>`+data.explusionCreateDate+`</td>`;
             item += `</tr>`;
         }
         return item;

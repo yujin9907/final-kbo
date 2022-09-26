@@ -6,6 +6,7 @@ import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import site.meta.finalkbo.domain.expulsion.Expulsion;
 import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.service.PlayerService;
 import site.meta.finalkbo.service.TeamService;
@@ -15,6 +16,7 @@ import site.meta.finalkbo.web.dto.request.PlayerInsertDto;
 import site.meta.finalkbo.web.dto.response.CMRespDto;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,6 +78,11 @@ public class PlayerController {
     @GetMapping("/explusion/{teamId}")
     public @ResponseBody CMRespDto<?> explusionteam(@PathVariable Integer teamId){
         List<PlayerViewDto> player = playerService.구단별목록보기(teamId);
+//        Expulsion expulsion = playerService.퇴출사유보기(teamId);
+//
+//        Map<String, Object> result = new HashMap<>();
+//        result.put("player", player);
+//        result.put("expulsion", expulsion);
         return new CMRespDto<>(1, "1", player);
     }
 

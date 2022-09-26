@@ -17,4 +17,6 @@ public interface PlayersDao {
 
     public List<PositionDto> positionView(List<TeamViewDto> teams);
     public List<PlayerViewDto> findByTeamId(Integer teamId);
+    public List<PlayerViewDto> playerTeamExplusion(Integer teamId);
+
 }

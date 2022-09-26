@@ -9,7 +9,11 @@
         values (#{reason}, #{id}, now())
     </insert>
 
-    <select id="findAll" resultType="site.meta.finalkbo.domain.expulsion.Expulsion">
+    <select id="findByPlayerId" resultType="site.meta.finalkbo.domain.expulsion.Expulsion">
+        select * from expulsion where playerId=#{playerId}
+    </select>
+
+    <select id="findAll" resultType="site.meta.finalkbo.web.dto.response.ExplusionDto">
         select * from expulsion
     </select>
 
