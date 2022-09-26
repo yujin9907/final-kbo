@@ -33,34 +33,29 @@
     function viewteam(id){
         $.ajax({
             type: "GET",
-            url: "/expulsion/"+id,
+            url: "/explusion/"+id,
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).done(function(res){
-            console.log(res.data.player);
             $("#team_list").empty();
-            renderTeamList(res.data.player);
+            $("#team_list").append(makeTeamItem(res.data));
         }).fail(function(error){
             console.log(error);
             alert("실패");
         });
     }
 
-    function renderTeamList(teams){
-        for(let team of teams){
-            // $("#team_list").append(makeTeamItem(team));
-            console.log(team);
+    function makeTeamItem(x){
+        let item = `<tr>`;
+        for(let team of x){
+            item += `<td>`+team.teamName+`</td>`;
+            item += `<td>`+team.position+`</td>`;
+            item += `<td>`+team.name+`</td>`;
+            item += `<td>공란</td>`;
+            item += `<td>공란</td>`;
+            item += `</tr>`;
         }
-    }
-    function makeTeamItem(team){
-        <%--let item = `<tr>`;--%>
-        <%--item += `<td>${team.teamName}</td>`;--%>
-        <%--item += `<td>${team.position}</td>`;--%>
-        <%--item += `<td>${team.name}</td>`;--%>
-        <%--item += `<td></td>`;--%>
-        <%--item += `<td></td>`;--%>
-        <%--item += `</tr>`;--%>
-        <%--return item;--%>
+        return item;
     }
 
 
