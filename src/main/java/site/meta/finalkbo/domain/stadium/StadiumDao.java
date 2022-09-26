@@ -1,7 +1,5 @@
 package site.meta.finalkbo.domain.stadium;
 
-import site.meta.finalkbo.web.dto.request.InsertDto;
-
 import java.util.List;
 
 public interface StadiumDao {

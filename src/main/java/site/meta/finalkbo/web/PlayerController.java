@@ -1,22 +1,17 @@
 package site.meta.finalkbo.web;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import site.meta.finalkbo.domain.expulsion.Expulsion;
 import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.service.PlayerService;
 import site.meta.finalkbo.service.TeamService;
-import site.meta.finalkbo.web.dto.request.ExclusionInsertDto;
-import site.meta.finalkbo.web.dto.request.InsertDto;
-import site.meta.finalkbo.web.dto.request.PlayerInsertDto;
 import site.meta.finalkbo.web.dto.response.CMRespDto;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 
 import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @Controller
@@ -55,8 +50,9 @@ public class PlayerController {
         return "player/playerSaveForm";
     }
     @PostMapping("/player")
-    public @ResponseBody CMRespDto<?> insert(@RequestBody PlayerInsertDto playerInsertDto){
-        playerService.선수등록(playerInsertDto);
+    public @ResponseBody CMRespDto<?> insert(@RequestBody Player player){
+        Player player1 = new Player(player.getName(), player.getTeamId(), player.getPosition());
+        playerService.선수등록(player1);
         return new CMRespDto<>(1, "성공", null);
     }
 
@@ -90,8 +86,9 @@ public class PlayerController {
         return "player/explusionSaveForm";
     }
     @PostMapping("/exclusion")
-    public String saveExplusion(@RequestBody ExclusionInsertDto exclusionInsertDto){
-        playerService.퇴출등록(exclusionInsertDto);
+    public String saveExplusion(@RequestBody Expulsion expulsion){
+        Expulsion expulsion1 = new Expulsion(expulsion.getId(), expulsion.getReason());
+        playerService.퇴출등록(expulsion1);
         return "redirect:/explusion/1";
     }
 }

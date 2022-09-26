@@ -7,8 +7,6 @@ import site.meta.finalkbo.domain.expulsion.ExpulsionDao;
 import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.domain.player.PlayersDao;
 import site.meta.finalkbo.domain.team.TeamDao;
-import site.meta.finalkbo.web.dto.request.ExclusionInsertDto;
-import site.meta.finalkbo.web.dto.request.PlayerInsertDto;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 import site.meta.finalkbo.web.dto.response.PositionDto;
 import site.meta.finalkbo.web.dto.response.TeamViewDto;
@@ -39,8 +37,8 @@ public class PlayerService {
     public List<PlayerViewDto> 선수목록보기(){
         return playersDao.findAll();
     };
-    public void 선수등록(PlayerInsertDto playerInsertDto){
-        playersDao.insert(playerInsertDto);
+    public void 선수등록(Player player){
+        playersDao.insert(player);
     }
     public List<PositionDto> 포지션별보기(){
         List<TeamViewDto> teams = teamDao.findAllView();
@@ -50,8 +48,8 @@ public class PlayerService {
     public List<PlayerViewDto> 구단별목록보기(Integer teamId){
         return playersDao.findByTeamId(teamId);
     }
-    public void 퇴출등록(ExclusionInsertDto exclusionInsertDto){
-        expulsionDao.insert(exclusionInsertDto);
+    public void 퇴출등록(Expulsion expulsion){
+        expulsionDao.insert(expulsion);
     }
     public List<Expulsion> 퇴출보기(){
         return expulsionDao.findAll();

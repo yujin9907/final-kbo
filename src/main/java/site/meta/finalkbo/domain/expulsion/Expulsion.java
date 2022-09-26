@@ -13,4 +13,9 @@ public class Expulsion {
     private String reason;
     private Integer playerId;
     private Timestamp createDate;
+
+    public Expulsion(Integer id, String reason) {
+        this.id = id;
+        this.reason = reason;
+    }
 }
