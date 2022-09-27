@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import site.meta.finalkbo.domain.stadium.StadiumDao;
 import site.meta.finalkbo.domain.team.Team;
 import site.meta.finalkbo.domain.team.TeamDao;
-import site.meta.finalkbo.web.dto.response.TeamViewDto;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class TeamService {
     public Team 팀한건보기(Integer id){
         return teamDao.findById(id);
     }
-    public List<TeamViewDto> 팀목록보기(){
+    public List<Team> 팀목록보기(){
         return teamDao.findAllView();
     }
     public void 팀등록(Team team){

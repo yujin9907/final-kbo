@@ -48,6 +48,7 @@
     function makeTeamItem(x){
         let item = `<tr>`;
         for(let team of x){
+            item += `<td></td>`;
             item += `<td>`+team.teamName+`</td>`;
             item += `<td>`+team.position+`</td>`;
             item += `<td>`+team.name+`</td>`;

@@ -13,8 +13,8 @@
         select * from team where id=#{id}
     </select>
 
-    <select id="findAllView" resultType="site.meta.finalkbo.web.dto.response.TeamViewDto">
-        select t.id id, t.name name, t.createDate createDate, s.name StadiumName, s.id stadiumId
+    <select id="findAllView" resultType="site.meta.finalkbo.domain.team.Team">
+        select t.id id, t.name name, t.createDate createDate, s.name stadiumName, s.id stadiumId
         from team t
         left join stadium s
         on t.stadiumId = s.id

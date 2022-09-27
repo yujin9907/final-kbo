@@ -8,7 +8,6 @@ import site.meta.finalkbo.domain.team.Team;
 import site.meta.finalkbo.service.StadiumService;
 import site.meta.finalkbo.service.TeamService;
 import site.meta.finalkbo.web.dto.response.CMRespDto;
-import site.meta.finalkbo.web.dto.response.TeamViewDto;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class TeamController {
 
     @GetMapping("/team/insert")
     public String viewInsertForm(Model model){
-        List<TeamViewDto> teamPS = teamService.팀목록보기();
+        List<Team> teamPS = teamService.팀목록보기();
         model.addAttribute("stadium", stadiumService.경기장목록보기());
         return "team/teamSaveForm";
     }

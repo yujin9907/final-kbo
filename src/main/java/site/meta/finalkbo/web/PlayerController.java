@@ -9,7 +9,6 @@ import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.service.PlayerService;
 import site.meta.finalkbo.service.TeamService;
 import site.meta.finalkbo.web.dto.response.CMRespDto;
-import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 
 import java.util.List;
 
@@ -71,7 +70,7 @@ public class PlayerController {
     }
     @GetMapping("/explusion/{teamId}")
     public @ResponseBody CMRespDto<?> explusionteam(@PathVariable Integer teamId){
-        List<PlayerViewDto> player = playerService.구단별목록보기(teamId);
+        List<Player> player = playerService.구단별목록보기(teamId);
         return new CMRespDto<>(1, "1", player);
     }
 

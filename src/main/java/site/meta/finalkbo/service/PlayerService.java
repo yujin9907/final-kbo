@@ -7,10 +7,9 @@ import site.meta.finalkbo.domain.expulsion.Expulsion;
 import site.meta.finalkbo.domain.expulsion.ExpulsionDao;
 import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.domain.player.PlayersDao;
+import site.meta.finalkbo.domain.team.Team;
 import site.meta.finalkbo.domain.team.TeamDao;
-import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 import site.meta.finalkbo.web.dto.response.PositionDto;
-import site.meta.finalkbo.web.dto.response.TeamViewDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,18 +34,18 @@ public class PlayerService {
     public Player 선수한건보기(Integer id){
         return playersDao.findById(id);
     }
-    public List<PlayerViewDto> 선수목록보기(){
+    public List<Player> 선수목록보기(){
         return playersDao.findAll();
     };
     public void 선수등록(Player player){
         playersDao.insert(player);
     }
     public List<PositionDto> 포지션별보기(){
-        List<TeamViewDto> teams = teamDao.findAllView();
+        List<Team> teams = teamDao.findAllView();
         return playersDao.positionView(teams);
     }
 
-    public List<PlayerViewDto> 구단별목록보기(Integer teamId){
+    public List<Player> 구단별목록보기(Integer teamId){
         return playersDao.findByTeamId(teamId);
     }
     @Transactional
@@ -60,27 +59,27 @@ public class PlayerService {
 
 
 
-    public Map<String, List<PlayerViewDto>> 구단별선수목록보기2(){
-        List<PlayerViewDto> playerPS = playersDao.findAll();
-
-        List<PlayerViewDto> dusanList = new ArrayList<>();
-        List<PlayerViewDto> NCList = new ArrayList<>();
-        List<PlayerViewDto> lotteList = new ArrayList<>();
-
-        for(PlayerViewDto player : playerPS) {
-            if(player.getTeamId()==1){
-                dusanList.add(player);
-            } else if (player.getTeamId()==2){
-                NCList.add(player);
-            } else {
-                lotteList.add(player);
-            }
-        }
-        Map<String, List<PlayerViewDto>> result = new HashMap<>();
-        result.put("dusan", dusanList);
-        result.put("ns", NCList);
-        result.put("lotte", lotteList);
-
-        return result;
-    }
+//    public Map<String, List<PlayerViewDto>> 구단별선수목록보기2(){
+//        List<PlayerViewDto> playerPS = playersDao.findAll();
+//
+//        List<PlayerViewDto> dusanList = new ArrayList<>();
+//        List<PlayerViewDto> NCList = new ArrayList<>();
+//        List<PlayerViewDto> lotteList = new ArrayList<>();
+//
+//        for(PlayerViewDto player : playerPS) {
+//            if(player.getTeamId()==1){
+//                dusanList.add(player);
+//            } else if (player.getTeamId()==2){
+//                NCList.add(player);
+//            } else {
+//                lotteList.add(player);
+//            }
+//        }
+//        Map<String, List<PlayerViewDto>> result = new HashMap<>();
+//        result.put("dusan", dusanList);
+//        result.put("ns", NCList);
+//        result.put("lotte", lotteList);
+//
+//        return result;
+//    }
 }
