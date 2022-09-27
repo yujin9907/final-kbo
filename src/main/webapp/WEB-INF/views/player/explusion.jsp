@@ -51,8 +51,8 @@
             item += `<td>`+team.teamName+`</td>`;
             item += `<td>`+team.position+`</td>`;
             item += `<td>`+team.name+`</td>`;
-            item += `<td>공란</td>`;
-            item += `<td>공란</td>`;
+            item += `<td></td>`;
+            item += `<td></td>`;
             item += `</tr>`;
         }
         return item;

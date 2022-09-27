@@ -49,11 +49,14 @@ public class PlayerService {
         return playersDao.findByTeamId(teamId);
     }
     public void 퇴출등록(Expulsion expulsion){
+        playersDao.deleteToTeam(expulsion.getPlayerId());
         expulsionDao.insert(expulsion);
     }
     public List<Expulsion> 퇴출보기(){
         return expulsionDao.findAll();
     }
+
+
 
     public Map<String, List<PlayerViewDto>> 구단별선수목록보기2(){
         List<PlayerViewDto> playerPS = playersDao.findAll();

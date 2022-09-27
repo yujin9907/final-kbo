@@ -45,4 +45,8 @@
         UPDATE player SET name=#{player.name}, position=#{player.position}, teamId=#{player.teamId} where id=#{id}
     </update>
 
+    <update id="deleteToTeam">
+        UPDATE player SET teamId=null where id=#{teamId}
+    </update>
+
 </mapper>

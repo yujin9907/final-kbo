@@ -2,6 +2,7 @@ package site.meta.finalkbo.web.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;
+import site.meta.finalkbo.domain.expulsion.Expulsion;
 
 import java.sql.Timestamp;
 
