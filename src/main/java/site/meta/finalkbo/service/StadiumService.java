@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import site.meta.finalkbo.domain.stadium.Stadium;
 import site.meta.finalkbo.domain.stadium.StadiumDao;
-import site.meta.finalkbo.web.dto.request.InsertDto;
 
 import java.util.List;
 
