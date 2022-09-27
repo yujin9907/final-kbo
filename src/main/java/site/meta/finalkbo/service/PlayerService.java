@@ -2,6 +2,7 @@ package site.meta.finalkbo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import site.meta.finalkbo.domain.expulsion.Expulsion;
 import site.meta.finalkbo.domain.expulsion.ExpulsionDao;
 import site.meta.finalkbo.domain.player.Player;
@@ -48,8 +49,9 @@ public class PlayerService {
     public List<PlayerViewDto> 구단별목록보기(Integer teamId){
         return playersDao.findByTeamId(teamId);
     }
+    @Transactional
     public void 퇴출등록(Expulsion expulsion){
-        playersDao.deleteToTeam(expulsion.getPlayerId());
+        playersDao.deleteToTeam(expulsion.getId());
         expulsionDao.insert(expulsion);
     }
     public List<Expulsion> 퇴출보기(){
