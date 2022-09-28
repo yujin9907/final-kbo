@@ -1,21 +1,22 @@
 package site.meta.finalkbo.domain.player;
 
-import site.meta.finalkbo.web.dto.request.PlayerInsertDto;
+import org.apache.ibatis.annotations.Param;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
-import site.meta.finalkbo.web.dto.response.PositionDto;
-import site.meta.finalkbo.web.dto.response.TeamViewDto;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PlayersDao {
-    public void insert(PlayerInsertDto playerInsertDto);
+    public void insert(Player player);
     public List<PlayerViewDto> findAll();
     public Player findById(Integer id);
     public void deleteById(Integer id);
     public void update(Integer id, Player player);
 
 
-    public List<PositionDto> positionView(List<TeamViewDto> teams);
+    public List<String> findTeam();
+    public List<Map<String, Object>> findPositionByTeam(@Param("teamNameList") List<String> teamNameList);
+
     public List<PlayerViewDto> findByTeamId(Integer teamId);
     public List<PlayerViewDto> playerTeamExplusion(Integer teamId);
 

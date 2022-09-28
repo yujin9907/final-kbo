@@ -10,9 +10,6 @@ import site.meta.finalkbo.domain.expulsion.Expulsion;
 import site.meta.finalkbo.domain.player.Player;
 import site.meta.finalkbo.service.PlayerService;
 import site.meta.finalkbo.service.TeamService;
-import site.meta.finalkbo.web.dto.request.ExclusionInsertDto;
-import site.meta.finalkbo.web.dto.request.InsertDto;
-import site.meta.finalkbo.web.dto.request.PlayerInsertDto;
 import site.meta.finalkbo.web.dto.response.CMRespDto;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 
@@ -57,16 +54,11 @@ public class PlayerController {
         return "player/playerSaveForm";
     }
     @PostMapping("/player")
-    public @ResponseBody CMRespDto<?> insert(@RequestBody PlayerInsertDto playerInsertDto){
-        playerService.선수등록(playerInsertDto);
+    public @ResponseBody CMRespDto<?> insert(@RequestBody Player player){
+        playerService.선수등록(player);
         return new CMRespDto<>(1, "성공", null);
     }
 
-    @GetMapping("/position")
-    public String position(Model model){
-        model.addAttribute("position", playerService.포지션별보기());
-        return "player/playerPosition";
-    }
 
 
 
@@ -78,11 +70,6 @@ public class PlayerController {
     @GetMapping("/explusion/{teamId}")
     public @ResponseBody CMRespDto<?> explusionteam(@PathVariable Integer teamId){
         List<PlayerViewDto> player = playerService.구단별목록보기(teamId);
-//        Expulsion expulsion = playerService.퇴출사유보기(teamId);
-//
-//        Map<String, Object> result = new HashMap<>();
-//        result.put("player", player);
-//        result.put("expulsion", expulsion);
         return new CMRespDto<>(1, "1", player);
     }
 
@@ -97,8 +84,8 @@ public class PlayerController {
         return "player/explusionSaveForm";
     }
     @PostMapping("/exclusion")
-    public String saveExplusion(@RequestBody ExclusionInsertDto exclusionInsertDto){
-        playerService.퇴출등록(exclusionInsertDto);
+    public String saveExplusion(@RequestBody Expulsion expulsion){
+        playerService.퇴출등록(expulsion);
         return "redirect:/explusion/1";
     }
 }

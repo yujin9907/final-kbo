@@ -20,7 +20,7 @@
         where teamId=#{teamId}
     </select>
 
-    <select id="positionView" parameterType="java.util.HashMap">
+    <select id="findPositionByTeam" resultType="map">
         SELECT POSITION,
         <foreach collection="teams" item="team" close="" separator=", ">
         MAX(if(teamId=#{team.id},name,'')) as #{team.name}
