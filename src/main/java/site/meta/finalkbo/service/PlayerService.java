@@ -48,6 +48,9 @@ public class PlayerService {
 
     public List<PlayerViewDto> 구단별목록보기(Integer teamId){
         return playersDao.findByTeamId(teamId);
+
+        // 여기다가 explusiondto 구현
+
     }
     @Transactional
     public void 퇴출등록(Expulsion expulsion){
