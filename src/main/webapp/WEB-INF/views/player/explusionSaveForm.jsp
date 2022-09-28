@@ -23,7 +23,7 @@
 
     function insert(){
         let data = {
-            id: $("#id").val(),
+            playerId: $("#id").val(),
             reason : $("#reason").val()
         };
 

@@ -51,6 +51,7 @@ public class PlayerService {
         return expulsionDao.findByPlayerId(playerId);
     }
     public void 퇴출등록(Expulsion expulsion){
+        playersDao.deleteByTeamId(expulsion.getPlayerId());
         expulsionDao.insert(expulsion);
     }
     public List<Expulsion> 퇴출보기(){

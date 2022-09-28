@@ -14,10 +14,7 @@ public interface PlayersDao {
     public void update(Integer id, Player player);
 
 
-    public List<String> findTeam();
-    public List<Map<String, Object>> findPositionByTeam(@Param("teamNameList") List<String> teamNameList);
 
-    public List<PlayerViewDto> findByTeamId(Integer teamId);
     public List<PlayerViewDto> playerTeamExplusion(Integer teamId);
-
+    public void deleteByTeamId(Integer playerId);
 }
