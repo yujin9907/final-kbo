@@ -25,6 +25,13 @@ public class PlayerService {
 
 
 
+    public List<Map<String, Object>> 포지션별목록보기(){
+        List<Team> team1 = teamDao.findAllView();
+        return playersDao.findPositionByTeam(team1);
+    }
+
+
+
     public void 선수삭제(Integer id){
         playersDao.deleteById(id);
     }

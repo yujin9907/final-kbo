@@ -1,6 +1,7 @@
 package site.meta.finalkbo.domain.player;
 
 import org.apache.ibatis.annotations.Param;
+import site.meta.finalkbo.domain.team.Team;
 import site.meta.finalkbo.web.dto.response.PlayerViewDto;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface PlayersDao {
 
     public List<PlayerViewDto> playerTeamExplusion(Integer teamId);
     public void deleteByTeamId(Integer playerId);
+
+    public List<Map<String, Object>> findPositionByTeam(List<Team> team);
 }

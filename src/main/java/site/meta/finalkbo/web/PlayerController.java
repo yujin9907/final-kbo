@@ -25,6 +25,13 @@ public class PlayerController {
     private final TeamService teamService;
 
 
+    @GetMapping("/position")
+    public String position(Model model){
+        model.addAttribute("position", playerService.포지션별목록보기());
+        return "player/playerPosition";
+    }
+
+
     @DeleteMapping("/player/delete/{id}")
     public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id){
         playerService.선수삭제(id);
